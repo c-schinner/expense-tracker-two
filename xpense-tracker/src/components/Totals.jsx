@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Utilities from './categories/Utilities';
 
 
 const Totals = () => {
@@ -34,6 +35,7 @@ const Totals = () => {
 
 
     return (
+        <>
         <div className="h-[250px] w-full overflow-y-auto p-2 max-w-4xl mx-auto">
             <div className="flex flex-row justify-evenly p-2">
                 <div className="flex flex-col items-center pt-5">
@@ -81,6 +83,8 @@ const Totals = () => {
                 </div>
             </div>
         </div>
+        <Utilities />
+        </>
     )
 }
 
