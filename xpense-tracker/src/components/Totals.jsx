@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Utilities from './categories/Utilities';
+import Housing from './categories/Housing';
 
 
 const Totals = () => {
@@ -83,6 +84,7 @@ const Totals = () => {
                 </div>
             </div>
         </div>
+        <Housing />
         <Utilities />
         </>
     )
