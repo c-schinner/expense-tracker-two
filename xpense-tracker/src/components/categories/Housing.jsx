@@ -10,12 +10,25 @@ const Housing = () => {
     const [amount, setAmount] = useState('');
     const [details, setDetails] = useState('');
     const [submitData, setSubmitData] = useState([]);
+    const [selectedIndex, setSelectedIndex] = useState('');
 
     const handleAddClick = () => {
         if (details && amount) {
             setSubmitData([...submitData, { details, amount }]);
             setDetails('');
             setAmount('');
+        }
+    };
+
+    const handleRowClick = (index) => {
+        setSelectedIndex(index);
+    };
+
+    const handleDeleteClick = () => {
+        if (selectedIndex !== null) {
+            const updatedData = submitData.filter((_, index) => index !== selectedIndex);
+            setSubmitData(updatedData);
+            setSelectedIndex(null);
         }
     };
 
@@ -43,12 +56,22 @@ const Housing = () => {
                     onClick={handleAddClick}>
                         Add
                     </button>
+                    <button
+                    onClick={handleDeleteClick}
+                    disabled={selectedIndex === null}
+                    className="m-1 px-4 py-2 bg-red-400 text-white rounded-md shadow-md transform active:scale-95 transition-transform duration-150">
+                        Delete
+                    </button>
                 </div>
                 <div className="border border-black rounded-sm p-2 h-[100px] overflow-y-auto">
                     {submitData.length > 0 ? (
                         <ul>
                             {submitData.map((item, index) => (
-                                <li key={index}>
+                                <li 
+                                key={index}
+                                onClick={() => handleRowClick(index)}
+                                className={`p-2 cursor-pointer ${index === selectedIndex ? 'bg-blue-200' : ''}`}
+                                >
                                     {item.details} : ${item.amount}
                                 </li>
                             ))}

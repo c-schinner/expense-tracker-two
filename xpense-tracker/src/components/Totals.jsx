@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react';
 import Utilities from './categories/Utilities';
 import Housing from './categories/Housing';
+import Entertainment from './categories/Entertainment';
+import Groceries from './categories/Groceries';
+import Other from './categories/Other';
 
 
 const Totals = () => {
@@ -14,9 +17,9 @@ const Totals = () => {
         setIncome(e.target.value);
     };
 
-    //const handleUpdateTotalExpenses = (newTotal) => {
-        //setTotalExpenses(newTotal);
-    //}
+    const handleUpdateTotalExpenses = (newTotal) => {
+        setTotalExpenses(newTotal);
+    }
 
     const handleSaveIncome = () => {
         const incomeNumber = parseFloat(income) || 0;
@@ -86,6 +89,9 @@ const Totals = () => {
         </div>
         <Housing />
         <Utilities />
+        <Entertainment />
+        <Groceries />
+        <Other />
         </>
     )
 }

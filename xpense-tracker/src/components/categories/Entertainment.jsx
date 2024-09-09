@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Utilities = () => {
+const Entertainment = () => {
 
     const [amount, setAmount] = useState('');
     const [details, setDetails] = useState('');
@@ -30,7 +30,7 @@ const Utilities = () => {
     return (
         <div className="flex-1 mix-blend-color-burn text-center p-10">
             <div className="h-[350px] border-4 border-black rounded-md p-4 m-4 font-bold max-w-4xl mx-auto justify-center">
-                    <h2 className="text-3xl">Utilities</h2>  
+                    <h2 className="text-3xl">Entertainment</h2>  
                 <div className="flex-row h-[150px] pt-8">
                     <input 
                     type="text"
@@ -80,4 +80,4 @@ const Utilities = () => {
     )
 }
 
-export default Utilities
+export default Entertainment
