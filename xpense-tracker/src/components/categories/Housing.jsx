@@ -1,11 +1,6 @@
-// so now that we have the basic layout for this section, we can copy it into each category...
-// next we have to create our state and make sure the functionality works for the buttons and input boxes...
-// then we will have to make sure each input changes the TotalExpenses state in our Totals component...
-// then we should have a really nice working app that handles their own state changes.
-
 import { useState } from "react"
 
-const Housing = () => {
+const Housing = ({ onAddExpense }) => {
 
     const [amount, setAmount] = useState('');
     const [details, setDetails] = useState('');
@@ -14,9 +9,11 @@ const Housing = () => {
 
     const handleAddClick = () => {
         if (details && amount) {
-            setSubmitData([...submitData, { details, amount }]);
+            const parsedAmount = parseFloat(amount);
+            setSubmitData([...submitData, { details, amount: parseFloat(amount) }]);
             setDetails('');
             setAmount('');
+            onAddExpense(parsedAmount);
         }
     };
 
@@ -25,10 +22,12 @@ const Housing = () => {
     };
 
     const handleDeleteClick = () => {
-        if (selectedIndex !== null) {
+        if (selectedIndex !== null && selectedIndex >= 0 && selectedIndex < submitData.length ) {
+            const amountToDelete = submitData[selectedIndex].amount;
             const updatedData = submitData.filter((_, index) => index !== selectedIndex);
             setSubmitData(updatedData);
             setSelectedIndex(null);
+            onAddExpense(-amountToDelete)
         }
     };
 

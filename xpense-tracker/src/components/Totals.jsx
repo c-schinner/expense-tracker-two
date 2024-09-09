@@ -17,8 +17,8 @@ const Totals = () => {
         setIncome(e.target.value);
     };
 
-    const handleUpdateTotalExpenses = (newTotal) => {
-        setTotalExpenses(newTotal);
+    const handleUpdateTotalExpenses = (newExpense) => {
+        setTotalExpenses((prevExpense) => prevExpense + newExpense);
     }
 
     const handleSaveIncome = () => {
@@ -34,7 +34,6 @@ const Totals = () => {
 
     useEffect(() => {
         handleExtraIncome();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [totalIncome, totalExpenses])
 
 
@@ -87,11 +86,11 @@ const Totals = () => {
                 </div>
             </div>
         </div>
-        <Housing />
-        <Utilities />
-        <Entertainment />
-        <Groceries />
-        <Other />
+        <Housing onAddExpense={handleUpdateTotalExpenses} />
+        <Utilities onAddExpense={handleUpdateTotalExpenses} />
+        <Entertainment onAddExpense={handleUpdateTotalExpenses} />
+        <Groceries onAddExpense={handleUpdateTotalExpenses} />
+        <Other onAddExpense={handleUpdateTotalExpenses} />
         </>
     )
 }

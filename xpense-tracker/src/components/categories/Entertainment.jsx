@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Entertainment = () => {
+const Entertainment = ({ onAddExpense }) => {
 
     const [amount, setAmount] = useState('');
     const [details, setDetails] = useState('');
@@ -9,9 +9,11 @@ const Entertainment = () => {
 
     const handleAddClick = () => {
         if (details && amount) {
+            const parsedAmount = parseFloat(amount);
             setSubmitData([...submitData, { details, amount }]);
             setDetails('');
             setAmount('');
+            onAddExpense(parsedAmount);
         }
     };
 
@@ -21,9 +23,11 @@ const Entertainment = () => {
 
     const handleDeleteClick = () => {
         if (selectedIndex !== null) {
+            const amountToDelete = submitData[selectedIndex].amount;
             const updatedData = submitData.filter((_, index) => index !== selectedIndex);
             setSubmitData(updatedData);
             setSelectedIndex(null);
+            onAddExpense(-amountToDelete);
         }
     };
 
