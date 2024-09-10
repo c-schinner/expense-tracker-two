@@ -39,7 +39,7 @@ const Totals = () => {
 
     return (
         <>
-        <div className="h-[250px] w-full overflow-y-auto p-2 max-w-4xl mx-auto">
+        <div className="sticky top-0 z-10 bg-gradient-to-br from-blue-500 to-orange-500 h-[250px] w-full overflow-y-auto p-2 max-w-4xl mx-auto">
             <div className="flex flex-row justify-evenly p-2">
                 <div className="flex flex-col items-center pt-5">
                         <label 
