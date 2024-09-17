@@ -33,36 +33,36 @@ const Groceries = ({ onAddExpense }) => {
 
     return (
         <div className="flex-1 mix-blend-color-burn text-center p-10">
-            <div className="h-[350px] border-4 border-black rounded-md p-4 m-4 font-bold max-w-4xl mx-auto justify-center">
-                    <h2 className="text-3xl">Groceries</h2>  
-                <div className="flex-row h-[150px] pt-8">
+            <div className="h-auto border-4 border-black rounded-md p-4 m-4 font-bold max-w-4xl mx-auto justify-center">
+                    <h2 className="text-3xl mb-4">Groceries</h2>  
+                <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-2 mb-4 w-full sm:w-auto">
                     <input 
                     type="text"
                     placeholder="Expense Details"
                     value={details}
                     onChange={(e) => setDetails(e.target.value)}
-                    className="border border-black rounded-md p-2 m-1"
+                    className="border border-black rounded-md p-2 m-1 w-full sm:w-auto"
                     />
                     <input
                     type="number"
                     placeholder="Amount"
                     value={amount}
                     onChange={(e) => setAmount(e.target.value)}
-                    className="border border-black rounded-md p-2 m-1"
+                    className="border border-black rounded-md p-2 m-1 w-full sm:w-auto"
                     />
                     <button
-                    className="m-3 px-4 py-2 bg-blue-400 text-black rounded-md shadow-md transform active:scale-95 transition-transform duration-150"
+                    className="m-3 px-4 py-2 bg-blue-400 text-black rounded-md shadow-md transform active:scale-95 transition-transform duration-150 w-full sm:w-auto"
                     onClick={handleAddClick}>
                         Add
                     </button>
                     <button
                     onClick={handleDeleteClick}
                     disabled={selectedIndex === null}
-                    className="m-1 px-4 py-2 bg-red-400 text-white rounded-md shadow-md transform active:scale-95 transition-transform duration-150">
-                        Delete
+                    className="m-1 px-4 py-2 bg-red-400 text-white rounded-md shadow-md transform active:scale-95 transition-transform duration-150 w-full sm:w-auto">
+                        X
                     </button>
                 </div>
-                <div className="border border-black rounded-sm p-2 h-[100px] overflow-y-auto">
+                <div className="border border-black rounded-sm p-2 h-[150px] sm:h-[200px] overflow-y-auto">
                     {submitData.length > 0 ? (
                         <ul>
                             {submitData.map((item, index) => (
